@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Cine | Panel Admin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #080808;
+            color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            height: 80px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #0c0c0c;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .logo span {
+            color: #c8a45d;
+        }
+
+        .volver {
+            color: #c8a45d;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .contenedor {
+            width: min(900px, 92%);
+            margin: 60px auto;
+        }
+
+        .etiqueta {
+            color: #c8a45d;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 40px;
+            font-size: 42px;
+        }
+
+        .panel {
+            background: #111;
+            border: 1px solid rgba(200,164,93,0.3);
+            padding: 35px;
+        }
+
+        .campo {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: #080808;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #c8a45d;
+        }
+
+        .boton {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #c8a45d;
+            background: #c8a45d;
+            color: #080808;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .boton:hover {
+            background: #e0c37c;
+        }
+
+        #mensaje {
+            margin-top: 20px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        #contenidoAdmin {
+            display: none;
+        }
+
+        #cargando {
+            text-align: center;
+            color: #999;
+            padding: 80px 20px;
+        }
+
+        .peliculas {
+            margin-top: 50px;
+        }
+
+        .pelicula {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px;
+            margin-bottom: 10px;
+            background: #111;
+            border: 1px solid #222;
+        }
+
+        .pelicula strong {
+            color: #c8a45d;
+        }
+
+        .eliminar {
+            background: transparent;
+            color: #c66;
+            border: 1px solid #633;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .panel {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .pelicula {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        MI <span>CINE</span>
+    </div>
+
+    <a
+        class="volver"
+        href="index.html"
+    >
+        ← VOLVER AL INICIO
+    </a>
+
+</header>
+
+
+<div id="cargando">
+    Comprobando permisos...
+</div>
+
+
+<main
+    id="contenidoAdmin"
+    class="contenedor"
+>
+
+    <div class="etiqueta">
+        PRIVATE CINEMA
+    </div>
+
+    <h1>
+        Panel Admin
+    </h1>
+
+
+    <section class="panel">
+
+        <div class="campo">
+
+            <label>
+                TÍTULO
+            </label>
+
+            <input
+                id="titulo"
+                type="text"
+                placeholder="Ej. La Monja 2"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                AÑO
+            </label>
+
+            <input
+                id="anio"
+                type="number"
+                placeholder="2023"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                GÉNERO
+            </label>
+
+            <input
+                id="genero"
+                type="text"
+                placeholder="Terror"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                DESCRIPCIÓN
+            </label>
+
+            <textarea
+                id="descripcion"
+                placeholder="Descripción de la película..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                URL DE LA CARÁTULA
+            </label>
+
+            <input
+                id="poster"
+                type="text"
+                placeholder="https://..."
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                URL DEL VIDEO
+            </label>
+
+            <input
+                id="video"
+                type="text"
+                placeholder="https://..."
+            >
+
+        </div>
+
+
+        <button
+            class="boton"
+            onclick="agregarPelicula()"
+        >
+            AGREGAR PELÍCULA
+        </button>
+
+
+        <div id="mensaje"></div>
+
+    </section>
+
+
+    <section class="peliculas">
+
+        <h2>
+            Películas registradas
+        </h2>
+
+        <div id="listaPeliculas"></div>
+
+    </section>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL =
+        "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_Dp43yxR3N2F4c14aIiQlqw_DpHMO3Sh";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    async function iniciarPanel() {
+
+        const {
+            data: {
+                user
+            }
+        } =
+            await supabaseClient.auth.getUser();
+
+
+        if (!user) {
+
+            document.getElementById("cargando").innerHTML =
+                "Debes iniciar sesión para acceder al panel.";
+
+            return;
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("user_roles")
+                .select("role")
+                .eq("user_id", user.id)
+                .single();
+
+
+        if (error || !data || data.role !== "admin") {
+
+            document.getElementById("cargando").innerHTML =
+                "Acceso denegado. Esta sección es solamente para administradores.";
+
+            return;
+        }
+
+
+        document.getElementById("cargando").style.display =
+            "none";
+
+        document.getElementById("contenidoAdmin").style.display =
+            "block";
+
+
+        cargarPeliculas();
+
+    }
+
+
+    async function agregarPelicula() {
+
+        const titulo =
+            document.getElementById("titulo").value.trim();
+
+        const anio =
+            document.getElementById("anio").value;
+
+        const genero =
+            document.getElementById("genero").value.trim();
+
+        const descripcion =
+            document.getElementById("descripcion").value.trim();
+
+        const poster =
+            document.getElementById("poster").value.trim();
+
+        const video =
+            document.getElementById("video").value.trim();
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+
+        if (!titulo) {
+
+            mensaje.textContent =
+                "El título es obligatorio.";
+
+            return;
+        }
+
+
+        mensaje.textContent =
+            "Guardando película...";
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("movies")
+                .insert({
+
+                    title: titulo,
+
+                    year: anio
+                        ? Number(anio)
+                        : null,
+
+                    genre: genero || null,
+
+                    description: descripcion || null,
+
+                    poster_url: poster || null,
+
+                    video_url: video || null
+
+                });
+
+
+        if (error) {
+
+            mensaje.textContent =
+                "Error: " + error.message;
+
+            return;
+        }
+
+
+        mensaje.textContent =
+            "Película agregada correctamente.";
+
+        document.getElementById("titulo").value = "";
+        document.getElementById("anio").value = "";
+        document.getElementById("genero").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("poster").value = "";
+        document.getElementById("video").value = "";
+
+
+        cargarPeliculas();
+
+    }
+
+
+    async function cargarPeliculas() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("movies")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        const lista =
+            document.getElementById("listaPeliculas");
+
+
+        if (error) {
+
+            lista.textContent =
+                "No se pudieron cargar las películas.";
+
+            return;
+        }
+
+
+        lista.innerHTML = "";
+
+
+        if (!data.length) {
+
+            lista.innerHTML =
+                "<p style='color:#777'>Todavía no hay películas registradas.</p>";
+
+            return;
+        }
+
+
+        data.forEach(
+            pelicula => {
+
+                const elemento =
+                    document.createElement("div");
+
+                elemento.className =
+                    "pelicula";
+
+
+                elemento.innerHTML = `
+
+                    <div>
+                        <strong>${escaparHTML(pelicula.title)}</strong>
+
+                        <div style="color:#777; font-size:12px; margin-top:5px;">
+                            ${pelicula.year || ""}
+                            ${pelicula.genre || ""}
+                        </div>
+                    </div>
+
+                    <button
+                        class="eliminar"
+                        onclick="eliminarPelicula(${pelicula.id})"
+                    >
+                        ELIMINAR
+                    </button>
+
+                `;
+
+
+                lista.appendChild(elemento);
+
+            }
+        );
+
+    }
+
+
+    async function eliminarPelicula(id) {
+
+        if (!confirm("¿Eliminar esta película?")) {
+            return;
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("movies")
+                .delete()
+                .eq("id", id);
+
+
+        if (error) {
+
+            alert(
+                "No se pudo eliminar: " +
+                error.message
+            );
+
+            return;
+        }
+
+
+        cargarPeliculas();
+
+    }
+
+
+    function escaparHTML(texto) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            texto || "";
+
+        return div.innerHTML;
+
+    }
+
+
+    iniciarPanel();
+
+</script>
+
+</body>
+</html>
