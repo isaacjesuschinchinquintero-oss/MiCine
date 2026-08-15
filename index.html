@@ -7,7 +7,6 @@
     <title>Mi Cine | Private Cinema</title>
 
     <style>
-
         * {
             box-sizing: border-box;
         }
@@ -23,31 +22,19 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
-
         header {
             height: 80px;
             padding: 0 6%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             background: rgba(8, 8, 8, 0.95);
-
             border-bottom: 1px solid rgba(255,255,255,0.08);
-
             position: sticky;
             top: 0;
-
             z-index: 1000;
-
             backdrop-filter: blur(15px);
         }
-
 
         .logo {
             font-size: 25px;
@@ -55,406 +42,383 @@
             font-weight: 700;
         }
 
-
         .logo span {
             color: #c8a45d;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
 
         nav a {
             color: #aaa;
-
             text-decoration: none;
-
-            margin-left: 30px;
-
             font-size: 14px;
-
             transition: 0.3s;
         }
-
 
         nav a:hover {
             color: #c8a45d;
         }
 
+        .cuenta-btn {
+            border: 1px solid #c8a45d;
+            color: #c8a45d;
+            background: transparent;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
 
-
-        /* =========================
-           HERO
-        ========================= */
+        .cuenta-btn:hover {
+            background: #c8a45d;
+            color: #080808;
+        }
 
         .hero {
-
             min-height: 620px;
-
             padding: 100px 8%;
-
             display: flex;
-
             align-items: center;
-
             background:
-
                 radial-gradient(
                     circle at 75% 40%,
                     rgba(200,164,93,0.15),
                     transparent 35%
                 ),
-
                 linear-gradient(
                     90deg,
                     #080808 20%,
                     rgba(8,8,8,0.75),
                     #080808
                 );
-
-            position: relative;
         }
-
 
         .hero-content {
             max-width: 650px;
         }
 
-
         .vip {
-
             color: #c8a45d;
-
             letter-spacing: 5px;
-
             font-size: 12px;
-
             margin-bottom: 20px;
         }
 
-
         .hero h1 {
-
             font-size: clamp(45px, 7vw, 85px);
-
             line-height: 0.95;
-
             margin: 0 0 25px;
-
             letter-spacing: -3px;
         }
 
-
         .hero p {
-
             color: #aaa;
-
             max-width: 550px;
-
             line-height: 1.7;
-
             font-size: 17px;
         }
 
-
         .hero-button {
-
             display: inline-block;
-
             margin-top: 30px;
-
             padding: 15px 30px;
-
             background: #c8a45d;
-
             color: #080808;
-
             text-decoration: none;
-
             font-weight: bold;
-
             border-radius: 3px;
-
             transition: 0.3s;
         }
 
-
         .hero-button:hover {
-
             transform: translateY(-3px);
-
             background: #e1c27d;
         }
 
-
-
-        /* =========================
-           CATÁLOGO
-        ========================= */
-
         .catalogo {
-
             padding: 80px 6%;
         }
 
-
         .titulo-seccion {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: end;
-
             margin-bottom: 30px;
         }
 
-
         .titulo-seccion h2 {
-
             font-size: 32px;
-
             margin: 0;
         }
 
-
         .titulo-seccion span {
-
             color: #777;
-
             font-size: 13px;
         }
 
-
-
-        /* =========================
-           PELÍCULAS
-        ========================= */
-
         .peliculas {
-
             display: grid;
-
             grid-template-columns:
                 repeat(auto-fill, minmax(210px, 1fr));
-
             gap: 25px;
         }
 
-
         .pelicula {
-
             background: #111;
-
             border: 1px solid rgba(255,255,255,0.07);
-
             overflow: hidden;
-
             transition:
                 transform 0.35s,
                 border-color 0.35s;
-
-            position: relative;
         }
-
 
         .pelicula:hover {
-
             transform: translateY(-8px);
-
-            border-color:
-                rgba(200,164,93,0.6);
+            border-color: rgba(200,164,93,0.6);
         }
 
-
         .poster {
-
             width: 100%;
-
             aspect-ratio: 2 / 3;
-
             object-fit: cover;
-
             display: block;
         }
 
-
         .contenido {
-
             padding: 18px;
         }
 
-
         .contenido h3 {
-
             margin: 0 0 8px;
-
             font-size: 19px;
         }
 
-
         .datos {
-
             color: #777;
-
             font-size: 12px;
-
             margin-bottom: 18px;
         }
 
-
         .ver {
-
             display: block;
-
             padding: 11px;
-
             text-align: center;
-
             color: #c8a45d;
-
             border: 1px solid #c8a45d;
-
             text-decoration: none;
-
             font-size: 13px;
-
             letter-spacing: 1px;
-
             transition: 0.3s;
         }
 
-
         .ver:hover {
-
             background: #c8a45d;
-
             color: #080808;
         }
 
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
         footer {
-
             margin-top: 80px;
-
             padding: 50px 6%;
-
-            border-top:
-                1px solid rgba(255,255,255,0.08);
-
+            border-top: 1px solid rgba(255,255,255,0.08);
             text-align: center;
-
             color: #555;
         }
 
-
         footer strong {
-
             color: #c8a45d;
-
             letter-spacing: 3px;
         }
 
+        /* VENTANA DE CUENTA */
 
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.82);
+            z-index: 5000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-        /* =========================
-           MÓVIL
-        ========================= */
+        .modal.activo {
+            display: flex;
+        }
+
+        .cuenta-box {
+            width: 100%;
+            max-width: 430px;
+            background: #101010;
+            border: 1px solid rgba(200,164,93,0.45);
+            padding: 35px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: #777;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cerrar:hover {
+            color: #c8a45d;
+        }
+
+        .cuenta-box .etiqueta {
+            color: #c8a45d;
+            letter-spacing: 4px;
+            font-size: 10px;
+            margin-bottom: 12px;
+        }
+
+        .cuenta-box h2 {
+            margin: 0 0 25px;
+            font-size: 30px;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 13px;
+            background: #080808;
+            border: 1px solid #333;
+            color: white;
+            outline: none;
+        }
+
+        .campo input:focus {
+            border-color: #c8a45d;
+        }
+
+        .accion-cuenta {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border: 1px solid #c8a45d;
+            background: #c8a45d;
+            color: #080808;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cambiar {
+            margin-top: 18px;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .cambiar button {
+            background: none;
+            border: none;
+            color: #c8a45d;
+            cursor: pointer;
+        }
+
+        #mensaje {
+            margin-top: 15px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .usuario-activo {
+            display: none;
+            color: #c8a45d;
+            font-size: 12px;
+        }
 
         @media (max-width: 700px) {
 
             header {
-
                 padding: 0 20px;
             }
 
-
             nav a {
-
-                margin-left: 12px;
-
-                font-size: 12px;
+                display: none;
             }
 
-
             .hero {
-
                 padding: 80px 25px;
-
                 min-height: 550px;
             }
 
-
             .catalogo {
-
                 padding: 50px 20px;
             }
 
-
             .peliculas {
-
                 grid-template-columns:
                     repeat(2, 1fr);
-
                 gap: 12px;
             }
 
-
             .contenido {
-
                 padding: 12px;
             }
 
-
             .contenido h3 {
-
                 font-size: 15px;
             }
 
+            .cuenta-box {
+                padding: 28px 22px;
+            }
         }
-
     </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header>
 
     <div class="logo">
-
         MI <span>CINE</span>
-
     </div>
 
-
     <nav>
+        <a href="#">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
 
-        <a href="#">
-            Inicio
-        </a>
+        <span
+            id="usuarioActivo"
+            class="usuario-activo"
+        >
+            CUENTA ACTIVA
+        </span>
 
-        <a href="#catalogo">
-            Catálogo
-        </a>
-
+        <button
+            id="cuentaBtn"
+            class="cuenta-btn"
+            onclick="abrirCuenta()"
+        >
+            INICIAR SESIÓN
+        </button>
     </nav>
 
 </header>
 
-
-
-<!-- =========================
-     HERO
-========================= -->
 
 <section class="hero">
 
@@ -464,32 +428,22 @@
             PRIVATE CINEMA
         </div>
 
-
         <h1>
-
             El cine,<br>
-
             a otro nivel.
-
         </h1>
 
-
         <p>
-
             Una colección exclusiva de películas,
             seleccionadas para disfrutarse como
             una experiencia cinematográfica privada.
-
         </p>
-
 
         <a
             href="#catalogo"
             class="hero-button"
         >
-
             EXPLORAR CATÁLOGO
-
         </a>
 
     </div>
@@ -497,23 +451,16 @@
 </section>
 
 
-
-<!-- =========================
-     CATÁLOGO
-========================= -->
-
 <section
     class="catalogo"
     id="catalogo"
 >
-
 
     <div class="titulo-seccion">
 
         <h2>
             Catálogo
         </h2>
-
 
         <span>
             COLECCIÓN PRIVADA
@@ -522,17 +469,9 @@
     </div>
 
 
-
     <div class="peliculas">
 
-
-
-        <!-- =========================
-             LA MONJA 2
-        ========================= -->
-
         <div class="pelicula">
-
 
             <img
                 class="poster"
@@ -540,54 +479,37 @@
                 alt="La Monja 2"
             >
 
-
             <div class="contenido">
-
 
                 <h3>
                     La Monja 2
                 </h3>
 
-
                 <div class="datos">
-
                     Terror · 2023
-
                 </div>
-
 
                 <a
                     href="paginas/La Monja 2.html"
                     class="ver"
                 >
-
                     VER PELÍCULA
-
                 </a>
-
 
             </div>
 
-
         </div>
-
 
     </div>
 
 </section>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <strong>
         MI CINE
     </strong>
-
 
     <p>
         Private Cinema Experience
@@ -596,6 +518,381 @@
 </footer>
 
 
-</body>
+<!-- VENTANA DE REGISTRO / INICIO DE SESIÓN -->
 
+<div
+    id="modalCuenta"
+    class="modal"
+>
+
+    <div class="cuenta-box">
+
+        <button
+            class="cerrar"
+            onclick="cerrarCuenta()"
+        >
+            ×
+        </button>
+
+        <div class="etiqueta">
+            MI CINE MEMBERS
+        </div>
+
+        <h2 id="tituloCuenta">
+            Iniciar sesión
+        </h2>
+
+
+        <div class="campo">
+
+            <label>
+                Correo electrónico
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="tu@email.com"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Contraseña
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Tu contraseña"
+            >
+
+        </div>
+
+
+        <button
+            class="accion-cuenta"
+            onclick="procesarCuenta()"
+        >
+            <span id="textoAccion">
+                INICIAR SESIÓN
+            </span>
+        </button>
+
+
+        <div
+            id="mensaje"
+        ></div>
+
+
+        <div class="cambiar">
+
+            <span id="textoCambiar">
+                ¿No tienes una cuenta?
+            </span>
+
+            <button
+                onclick="cambiarModo()"
+                id="botonCambiar"
+            >
+                Crear cuenta
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL =
+        "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
+
+    const SUPABASE_KEY =
+        "TU_CLAVE_PUBLICA_AQUI";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    let modoRegistro = false;
+
+
+    function abrirCuenta() {
+
+        document
+            .getElementById("modalCuenta")
+            .classList
+            .add("activo");
+
+    }
+
+
+    function cerrarCuenta() {
+
+        document
+            .getElementById("modalCuenta")
+            .classList
+            .remove("activo");
+
+    }
+
+
+    function cambiarModo() {
+
+        modoRegistro = !modoRegistro;
+
+        const titulo =
+            document.getElementById("tituloCuenta");
+
+        const accion =
+            document.getElementById("textoAccion");
+
+        const texto =
+            document.getElementById("textoCambiar");
+
+        const boton =
+            document.getElementById("botonCambiar");
+
+
+        if (modoRegistro) {
+
+            titulo.textContent =
+                "Crear cuenta";
+
+            accion.textContent =
+                "CREAR CUENTA";
+
+            texto.textContent =
+                "¿Ya tienes una cuenta?";
+
+            boton.textContent =
+                "Iniciar sesión";
+
+        } else {
+
+            titulo.textContent =
+                "Iniciar sesión";
+
+            accion.textContent =
+                "INICIAR SESIÓN";
+
+            texto.textContent =
+                "¿No tienes una cuenta?";
+
+            boton.textContent =
+                "Crear cuenta";
+        }
+
+        document
+            .getElementById("mensaje")
+            .textContent = "";
+
+    }
+
+
+    async function procesarCuenta() {
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
+
+
+        const mensaje =
+            document
+            .getElementById("mensaje");
+
+
+        mensaje.style.color =
+            "#999";
+
+        mensaje.textContent =
+            "Procesando...";
+
+
+        if (!email || !password) {
+
+            mensaje.style.color =
+                "#c8a45d";
+
+            mensaje.textContent =
+                "Introduce tu correo y contraseña.";
+
+            return;
+        }
+
+
+        if (password.length < 6) {
+
+            mensaje.style.color =
+                "#c8a45d";
+
+            mensaje.textContent =
+                "La contraseña debe tener al menos 6 caracteres.";
+
+            return;
+        }
+
+
+        try {
+
+            if (modoRegistro) {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.signUp({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                mensaje.style.color =
+                    "#c8a45d";
+
+                mensaje.textContent =
+                    "Cuenta creada. Revisa tu correo para confirmar tu cuenta.";
+
+            } else {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                mensaje.style.color =
+                    "#c8a45d";
+
+                mensaje.textContent =
+                    "Sesión iniciada correctamente.";
+
+                actualizarUsuario();
+
+                setTimeout(
+                    cerrarCuenta,
+                    1200
+                );
+
+            }
+
+        } catch (error) {
+
+            mensaje.style.color =
+                "#d66";
+
+            mensaje.textContent =
+                error.message;
+
+        }
+
+    }
+
+
+    async function actualizarUsuario() {
+
+        const {
+            data
+        } =
+            await supabaseClient.auth.getUser();
+
+
+        const boton =
+            document.getElementById("cuentaBtn");
+
+        const usuario =
+            document.getElementById("usuarioActivo");
+
+
+        if (data.user) {
+
+            boton.textContent =
+                "CERRAR SESIÓN";
+
+            boton.onclick =
+                cerrarSesion;
+
+            usuario.style.display =
+                "inline";
+
+        } else {
+
+            boton.textContent =
+                "INICIAR SESIÓN";
+
+            boton.onclick =
+                abrirCuenta;
+
+            usuario.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    async function cerrarSesion() {
+
+        await supabaseClient.auth.signOut();
+
+        actualizarUsuario();
+
+    }
+
+
+    supabaseClient.auth.onAuthStateChange(
+        function(event, session) {
+
+            actualizarUsuario();
+
+        }
+    );
+
+
+    actualizarUsuario();
+
+</script>
+
+
+</body>
 </html>
