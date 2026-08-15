@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Monja 2 | Mi Cine</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #080808;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            height: 80px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        header a {
+            color: #c8a45d;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 13px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .etiqueta {
+            color: #c8a45d;
+            letter-spacing: 5px;
+            font-size: 11px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 70px);
+            margin: 0 0 15px;
+        }
+
+        .datos {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .reproductor {
+            background: #000;
+            border: 1px solid rgba(200,164,93,0.35);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            max-height: 700px;
+        }
+
+        .informacion {
+            margin-top: 35px;
+            max-width: 850px;
+        }
+
+        .informacion h2 {
+            color: #c8a45d;
+        }
+
+        .informacion p {
+            color: #999;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <a href="../index.html">
+        ← VOLVER AL CATÁLOGO
+    </a>
+</header>
+
+<main>
+
+    <div class="etiqueta">
+        PRIVATE CINEMA
+    </div>
+
+    <h1>
+        La Monja 2
+    </h1>
+
+    <div class="datos">
+        Terror · 2023
+    </div>
+
+    <div class="reproductor">
+
+        <video controls preload="metadata">
+
+            <source
+                src="../peliculas/La Monja 2.mp4"
+                type="video/mp4"
+            >
+
+            Tu navegador no puede reproducir este video.
+
+        </video>
+
+    </div>
+
+    <div class="informacion">
+
+        <h2>
+            La Monja 2
+        </h2>
+
+        <p>
+            Disfruta de La Monja 2 en Mi Cine.
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+</html>
