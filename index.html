@@ -155,8 +155,7 @@
 
         .peliculas {
             display: grid;
-            grid-template-columns:
-                repeat(auto-fill, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
             gap: 25px;
         }
 
@@ -229,9 +228,7 @@
             padding: 30px 0;
         }
 
-        /* =========================
-           MEMBRESÍAS
-        ========================= */
+        /* MEMBRESÍAS */
 
         .membresias {
             padding: 80px 6%;
@@ -243,10 +240,6 @@
         .membresias-titulo {
             text-align: center;
             margin-bottom: 45px;
-        }
-
-        .membresias-titulo .vip {
-            margin-bottom: 12px;
         }
 
         .membresias-titulo h2 {
@@ -337,6 +330,7 @@
             margin-top: 25px;
             color: #aaa;
             font-size: 14px;
+            line-height: 1.5;
         }
 
         footer {
@@ -352,9 +346,7 @@
             letter-spacing: 3px;
         }
 
-        /* =========================
-           CUENTA
-        ========================= */
+        /* CUENTA */
 
         .modal {
             display: none;
@@ -610,7 +602,6 @@
 
     </div>
 
-
     <div
         class="peliculas"
         id="listaPeliculas"
@@ -646,7 +637,6 @@
         </p>
 
     </div>
-
 
     <div class="planes">
 
@@ -728,7 +718,6 @@
         </div>
 
     </div>
-
 
     <div id="mensajePago"></div>
 
@@ -837,11 +826,12 @@
         "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
 
     /*
-        IMPORTANTE:
-        Reemplaza TU_CLAVE_PUBLICA_AQUI
-        por tu Publishable Key de Supabase.
+       PEGA AQUÍ TU PUBLISHABLE KEY DE SUPABASE.
 
-        NO pongas aquí tu Stripe Secret Key.
+       NO pongas aquí:
+       - Stripe Secret Key
+       - STRIPE_SECRET_KEY
+       - service_role
     */
 
     const SUPABASE_KEY =
@@ -987,11 +977,8 @@
                     error
                 } =
                     await supabaseClient.auth.signUp({
-
                         email: email,
-
                         password: password
-
                     });
 
 
@@ -1009,11 +996,8 @@
                     error
                 } =
                     await supabaseClient.auth.signInWithPassword({
-
                         email: email,
-
                         password: password
-
                     });
 
 
@@ -1046,40 +1030,51 @@
 
     async function actualizarUsuario() {
 
-        const {
-            data
-        } =
-            await supabaseClient.auth.getUser();
+        try {
+
+            const {
+                data
+            } =
+                await supabaseClient.auth.getUser();
 
 
-        const boton =
-            document.getElementById("cuentaBtn");
+            const boton =
+                document.getElementById("cuentaBtn");
 
-        const usuario =
-            document.getElementById("usuarioActivo");
+            const usuario =
+                document.getElementById("usuarioActivo");
 
 
-        if (data.user) {
+            if (data.user) {
 
-            boton.textContent =
-                "CERRAR SESIÓN";
+                boton.textContent =
+                    "CERRAR SESIÓN";
 
-            boton.onclick =
-                cerrarSesion;
+                boton.onclick =
+                    cerrarSesion;
 
-            usuario.style.display =
-                "inline";
+                usuario.style.display =
+                    "inline";
 
-        } else {
+            } else {
 
-            boton.textContent =
-                "INICIAR SESIÓN";
+                boton.textContent =
+                    "INICIAR SESIÓN";
 
-            boton.onclick =
-                abrirCuenta;
+                boton.onclick =
+                    abrirCuenta;
 
-            usuario.style.display =
-                "none";
+                usuario.style.display =
+                    "none";
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Error verificando usuario:",
+                error
+            );
 
         }
 
@@ -1109,7 +1104,7 @@
 
 
         mensaje.textContent =
-            "Preparando el pago...";
+            "Conectando con el sistema de pago...";
 
 
         botones.forEach(
@@ -1121,14 +1116,30 @@
 
         try {
 
+            const url =
+                "https://auaqyfnyiqfxkjxtrkoi.supabase.co/functions/v1/create-checkout";
+
+
+            console.log(
+                "Enviando solicitud a:",
+                url
+            );
+
+            console.log(
+                "Price ID:",
+                priceId
+            );
+
+
             const respuesta =
                 await fetch(
-                    "https://auaqyfnyiqfxkjxtrkoi.supabase.co/functions/v1/create-checkout",
+                    url,
                     {
                         method: "POST",
 
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type":
+                                "application/json"
                         },
 
                         body: JSON.stringify({
@@ -1138,15 +1149,45 @@
                 );
 
 
-            const resultado =
-                await respuesta.json();
+            console.log(
+                "Estado HTTP:",
+                respuesta.status
+            );
+
+
+            const texto =
+                await respuesta.text();
+
+
+            console.log(
+                "Respuesta:",
+                texto
+            );
+
+
+            let resultado;
+
+
+            try {
+
+                resultado =
+                    JSON.parse(texto);
+
+            } catch {
+
+                resultado = {
+                    error: texto
+                };
+
+            }
 
 
             if (!respuesta.ok) {
 
                 throw new Error(
                     resultado.error ||
-                    "No se pudo iniciar el pago."
+                    "Error HTTP " +
+                    respuesta.status
                 );
 
             }
@@ -1155,10 +1196,14 @@
             if (!resultado.url) {
 
                 throw new Error(
-                    "Stripe no devolvió una dirección de pago."
+                    "Stripe no devolvió la URL de pago."
                 );
 
             }
+
+
+            mensaje.textContent =
+                "Redirigiendo a Stripe...";
 
 
             window.location.href =
@@ -1168,13 +1213,14 @@
         } catch (error) {
 
             console.error(
-                "Error de Stripe:",
+                "ERROR COMPLETO:",
                 error
             );
 
 
             mensaje.textContent =
-                "No se pudo iniciar el pago. Inténtalo nuevamente.";
+                "ERROR: " +
+                error.message;
 
 
             botones.forEach(
@@ -1200,27 +1246,229 @@
             );
 
 
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("movies")
-                .select("*")
-                .order(
-                    "created_at",
-                    {
-                        ascending: false
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("movies")
+                    .select("*")
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            lista.innerHTML = "";
+
+
+            if (!data || data.length === 0) {
+
+                lista.innerHTML =
+                    `
+                    <p class="cargando">
+                        Todavía no hay películas.
+                    </p>
+                    `;
+
+                return;
+
+            }
+
+
+            data.forEach(
+                pelicula => {
+
+                    const tarjeta =
+                        document.createElement(
+                            "div"
+                        );
+
+                    tarjeta.className =
+                        "pelicula";
+
+
+                    if (pelicula.poster_url) {
+
+                        const imagen =
+                            document.createElement(
+                                "img"
+                            );
+
+                        imagen.className =
+                            "poster";
+
+                        imagen.alt =
+                            pelicula.title;
+
+                        imagen.src =
+                            pelicula.poster_url;
+
+
+                        imagen.onerror =
+                            function() {
+
+                                const reemplazo =
+                                    document.createElement(
+                                        "div"
+                                    );
+
+                                reemplazo.className =
+                                    "poster-error";
+
+                                reemplazo.textContent =
+                                    "Carátula no disponible";
+
+                                imagen.replaceWith(
+                                    reemplazo
+                                );
+
+                            };
+
+
+                        tarjeta.appendChild(
+                            imagen
+                        );
+
+                    } else {
+
+                        const sinImagen =
+                            document.createElement(
+                                "div"
+                            );
+
+                        sinImagen.className =
+                            "poster-error";
+
+                        sinImagen.textContent =
+                            "Sin carátula";
+
+                        tarjeta.appendChild(
+                            sinImagen
+                        );
+
                     }
-                );
 
 
-        if (error) {
+                    const contenido =
+                        document.createElement(
+                            "div"
+                        );
+
+                    contenido.className =
+                        "contenido";
+
+
+                    const titulo =
+                        document.createElement(
+                            "h3"
+                        );
+
+                    titulo.textContent =
+                        pelicula.title;
+
+
+                    const datos =
+                        document.createElement(
+                            "div"
+                        );
+
+                    datos.className =
+                        "datos";
+
+                    datos.textContent =
+                        [
+                            pelicula.genre,
+                            pelicula.year
+                        ]
+                        .filter(Boolean)
+                        .join(" · ");
+
+
+                    const boton =
+                        document.createElement(
+                            "a"
+                        );
+
+                    boton.className =
+                        "ver";
+
+                    boton.textContent =
+                        "VER PELÍCULA";
+
+
+                    if (pelicula.video_url) {
+
+                        boton.href =
+                            pelicula.video_url;
+
+                        boton.target =
+                            "_blank";
+
+                        boton.rel =
+                            "noopener noreferrer";
+
+                    } else {
+
+                        boton.href =
+                            "#";
+
+                        boton.onclick =
+                            function(event) {
+
+                                event.preventDefault();
+
+                                alert(
+                                    "Esta película todavía no tiene video."
+                                );
+
+                            };
+
+                    }
+
+
+                    contenido.appendChild(
+                        titulo
+                    );
+
+                    contenido.appendChild(
+                        datos
+                    );
+
+                    contenido.appendChild(
+                        boton
+                    );
+
+
+                    tarjeta.appendChild(
+                        contenido
+                    );
+
+
+                    lista.appendChild(
+                        tarjeta
+                    );
+
+                }
+            );
+
+
+        } catch (error) {
 
             console.error(
                 "Error cargando películas:",
                 error
             );
+
 
             lista.innerHTML =
                 `
@@ -1229,210 +1477,7 @@
                 </p>
                 `;
 
-            return;
-
         }
-
-
-        lista.innerHTML = "";
-
-
-        if (!data || data.length === 0) {
-
-            lista.innerHTML =
-                `
-                <p class="cargando">
-                    Todavía no hay películas.
-                </p>
-                `;
-
-            return;
-
-        }
-
-
-        data.forEach(
-            pelicula => {
-
-                const tarjeta =
-                    document.createElement(
-                        "div"
-                    );
-
-                tarjeta.className =
-                    "pelicula";
-
-
-                if (pelicula.poster_url) {
-
-                    const imagen =
-                        document.createElement(
-                            "img"
-                        );
-
-                    imagen.className =
-                        "poster";
-
-                    imagen.alt =
-                        pelicula.title;
-
-                    imagen.src =
-                        pelicula.poster_url;
-
-
-                    imagen.onerror =
-                        function() {
-
-                            console.error(
-                                "No se pudo cargar la carátula:",
-                                pelicula.poster_url
-                            );
-
-
-                            const reemplazo =
-                                document.createElement(
-                                    "div"
-                                );
-
-                            reemplazo.className =
-                                "poster-error";
-
-                            reemplazo.textContent =
-                                "Carátula no disponible";
-
-
-                            imagen.replaceWith(
-                                reemplazo
-                            );
-
-                        };
-
-
-                    tarjeta.appendChild(
-                        imagen
-                    );
-
-                } else {
-
-                    const sinImagen =
-                        document.createElement(
-                            "div"
-                        );
-
-                    sinImagen.className =
-                        "poster-error";
-
-                    sinImagen.textContent =
-                        "Sin carátula";
-
-                    tarjeta.appendChild(
-                        sinImagen
-                    );
-
-                }
-
-
-                const contenido =
-                    document.createElement(
-                        "div"
-                    );
-
-                contenido.className =
-                    "contenido";
-
-
-                const titulo =
-                    document.createElement(
-                        "h3"
-                    );
-
-                titulo.textContent =
-                    pelicula.title;
-
-
-                const datos =
-                    document.createElement(
-                        "div"
-                    );
-
-                datos.className =
-                    "datos";
-
-                datos.textContent =
-                    [
-                        pelicula.genre,
-                        pelicula.year
-                    ]
-                    .filter(Boolean)
-                    .join(" · ");
-
-
-                const boton =
-                    document.createElement(
-                        "a"
-                    );
-
-                boton.className =
-                    "ver";
-
-                boton.textContent =
-                    "VER PELÍCULA";
-
-
-                if (pelicula.video_url) {
-
-                    boton.href =
-                        pelicula.video_url;
-
-                    boton.target =
-                        "_blank";
-
-                    boton.rel =
-                        "noopener noreferrer";
-
-                } else {
-
-                    boton.href =
-                        "#";
-
-                    boton.onclick =
-                        function(event) {
-
-                            event.preventDefault();
-
-                            alert(
-                                "Esta película todavía no tiene video."
-                            );
-
-                        };
-
-                }
-
-
-                contenido.appendChild(
-                    titulo
-                );
-
-                contenido.appendChild(
-                    datos
-                );
-
-                contenido.appendChild(
-                    boton
-                );
-
-
-                tarjeta.appendChild(
-                    contenido
-                );
-
-
-                lista.appendChild(
-                    tarjeta
-                );
-
-            }
-        );
 
     }
 
@@ -1456,7 +1501,7 @@
 
 
     /* =========================
-       MENSAJE DE PAGO
+       RESULTADO DEL PAGO
     ========================= */
 
     const parametros =
@@ -1471,18 +1516,20 @@
 
     if (estadoPago === "exitoso") {
 
-        alert(
-            "Pago realizado correctamente. Tu suscripción está siendo procesada."
-        );
+        document.getElementById(
+            "mensajePago"
+        ).textContent =
+            "Pago realizado correctamente.";
 
     }
 
 
     if (estadoPago === "cancelado") {
 
-        alert(
-            "El pago fue cancelado."
-        );
+        document.getElementById(
+            "mensajePago"
+        ).textContent =
+            "El pago fue cancelado.";
 
     }
 
