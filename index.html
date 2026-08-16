@@ -229,6 +229,116 @@
             padding: 30px 0;
         }
 
+        /* =========================
+           MEMBRESÍAS
+        ========================= */
+
+        .membresias {
+            padding: 80px 6%;
+            background: #0b0b0b;
+            border-top: 1px solid rgba(255,255,255,.06);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .membresias-titulo {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .membresias-titulo .vip {
+            margin-bottom: 12px;
+        }
+
+        .membresias-titulo h2 {
+            font-size: 38px;
+            margin: 0 0 12px;
+        }
+
+        .membresias-titulo p {
+            color: #777;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .planes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .plan {
+            background: #111;
+            border: 1px solid rgba(255,255,255,.08);
+            padding: 35px 28px;
+            text-align: center;
+            transition: transform .3s, border-color .3s;
+        }
+
+        .plan:hover {
+            transform: translateY(-7px);
+            border-color: rgba(200,164,93,.6);
+        }
+
+        .plan.destacado {
+            border-color: #c8a45d;
+        }
+
+        .plan h3 {
+            margin: 0 0 12px;
+            font-size: 24px;
+        }
+
+        .plan-precio {
+            color: #c8a45d;
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .plan-precio span {
+            color: #777;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .plan-descripcion {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 65px;
+            margin-bottom: 25px;
+        }
+
+        .plan-boton {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #c8a45d;
+            background: #c8a45d;
+            color: #080808;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .plan-boton:hover {
+            background: transparent;
+            color: #c8a45d;
+        }
+
+        .plan-boton:disabled {
+            opacity: .6;
+            cursor: wait;
+        }
+
+        #mensajePago {
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
         footer {
             margin-top: 80px;
             padding: 50px 6%;
@@ -242,7 +352,9 @@
             letter-spacing: 3px;
         }
 
-        /* CUENTA */
+        /* =========================
+           CUENTA
+        ========================= */
 
         .modal {
             display: none;
@@ -352,6 +464,15 @@
             font-size: 12px;
         }
 
+        @media (max-width: 800px) {
+
+            .planes {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+        }
+
         @media (max-width: 700px) {
 
             header {
@@ -387,6 +508,14 @@
             .cuenta-box {
                 padding: 28px 22px;
             }
+
+            .membresias {
+                padding: 60px 20px;
+            }
+
+            .membresias-titulo h2 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
@@ -407,6 +536,10 @@
 
         <a href="#catalogo">
             Catálogo
+        </a>
+
+        <a href="#membresias">
+            Membresías
         </a>
 
         <span
@@ -449,10 +582,10 @@
         </p>
 
         <a
-            href="#catalogo"
+            href="#membresias"
             class="hero-button"
         >
-            EXPLORAR CATÁLOGO
+            ELEGIR MEMBRESÍA
         </a>
 
     </div>
@@ -488,6 +621,116 @@
         </p>
 
     </div>
+
+</section>
+
+
+<section
+    class="membresias"
+    id="membresias"
+>
+
+    <div class="membresias-titulo">
+
+        <div class="vip">
+            MI CINE MEMBERS
+        </div>
+
+        <h2>
+            Elige tu membresía
+        </h2>
+
+        <p>
+            Elige el plan que mejor se adapte
+            a tu experiencia cinematográfica.
+        </p>
+
+    </div>
+
+
+    <div class="planes">
+
+        <div class="plan">
+
+            <h3>
+                Basic
+            </h3>
+
+            <div class="plan-precio">
+                $4.99
+                <span>/ mes</span>
+            </div>
+
+            <div class="plan-descripcion">
+                Acceso a nuestro catálogo de películas
+                y contenido exclusivo.
+            </div>
+
+            <button
+                class="plan-boton"
+                onclick="suscribirse('price_1U4qpd1URORCHyYPnOzAnxhy')"
+            >
+                SUSCRIBIRME
+            </button>
+
+        </div>
+
+
+        <div class="plan destacado">
+
+            <h3>
+                Plus
+            </h3>
+
+            <div class="plan-precio">
+                $8.99
+                <span>/ mes</span>
+            </div>
+
+            <div class="plan-descripcion">
+                Acceso ampliado a nuestro catálogo
+                y contenido exclusivo.
+            </div>
+
+            <button
+                class="plan-boton"
+                onclick="suscribirse('price_1U4qum1URORCHyYPpddoZgrP')"
+            >
+                SUSCRIBIRME
+            </button>
+
+        </div>
+
+
+        <div class="plan">
+
+            <h3>
+                Premium
+            </h3>
+
+            <div class="plan-precio">
+                $14.99
+                <span>/ mes</span>
+            </div>
+
+            <div class="plan-descripcion">
+                Acceso completo al catálogo y
+                contenido exclusivo Premium.
+            </div>
+
+            <button
+                class="plan-boton"
+                onclick="suscribirse('price_1U4qwX1URORCHyYP3TFDXdUI')"
+            >
+                SUSCRIBIRME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="mensajePago"></div>
 
 </section>
 
@@ -594,8 +837,11 @@
         "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
 
     /*
-        PEGA AQUÍ TU PUBLISHABLE KEY ACTUAL.
-        NO USES LA CLAVE SECRET O SERVICE_ROLE.
+        IMPORTANTE:
+        Reemplaza TU_CLAVE_PUBLICA_AQUI
+        por tu Publishable Key de Supabase.
+
+        NO pongas aquí tu Stripe Secret Key.
     */
 
     const SUPABASE_KEY =
@@ -850,6 +1096,99 @@
 
 
     /* =========================
+       STRIPE
+    ========================= */
+
+    async function suscribirse(priceId) {
+
+        const mensaje =
+            document.getElementById("mensajePago");
+
+        const botones =
+            document.querySelectorAll(".plan-boton");
+
+
+        mensaje.textContent =
+            "Preparando el pago...";
+
+
+        botones.forEach(
+            boton => {
+                boton.disabled = true;
+            }
+        );
+
+
+        try {
+
+            const respuesta =
+                await fetch(
+                    "https://auaqyfnyiqfxkjxtrkoi.supabase.co/functions/v1/create-checkout",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            priceId: priceId
+                        })
+                    }
+                );
+
+
+            const resultado =
+                await respuesta.json();
+
+
+            if (!respuesta.ok) {
+
+                throw new Error(
+                    resultado.error ||
+                    "No se pudo iniciar el pago."
+                );
+
+            }
+
+
+            if (!resultado.url) {
+
+                throw new Error(
+                    "Stripe no devolvió una dirección de pago."
+                );
+
+            }
+
+
+            window.location.href =
+                resultado.url;
+
+
+        } catch (error) {
+
+            console.error(
+                "Error de Stripe:",
+                error
+            );
+
+
+            mensaje.textContent =
+                "No se pudo iniciar el pago. Inténtalo nuevamente.";
+
+
+            botones.forEach(
+                boton => {
+                    boton.disabled = false;
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =========================
        CATÁLOGO
     ========================= */
 
@@ -924,10 +1263,6 @@
                     "pelicula";
 
 
-                /*
-                    CARÁTULA
-                */
-
                 if (pelicula.poster_url) {
 
                     const imagen =
@@ -944,13 +1279,6 @@
                     imagen.src =
                         pelicula.poster_url;
 
-
-                    /*
-                        Si la imagen falla,
-                        mostramos un mensaje
-                        en lugar de dejar
-                        un espacio vacío.
-                    */
 
                     imagen.onerror =
                         function() {
@@ -1004,10 +1332,6 @@
                 }
 
 
-                /*
-                    INFORMACIÓN
-                */
-
                 const contenido =
                     document.createElement(
                         "div"
@@ -1042,10 +1366,6 @@
                     .filter(Boolean)
                     .join(" · ");
 
-
-                /*
-                    BOTÓN
-                */
 
                 const boton =
                     document.createElement(
@@ -1133,6 +1453,38 @@
 
         }
     );
+
+
+    /* =========================
+       MENSAJE DE PAGO
+    ========================= */
+
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const estadoPago =
+        parametros.get("pago");
+
+
+    if (estadoPago === "exitoso") {
+
+        alert(
+            "Pago realizado correctamente. Tu suscripción está siendo procesada."
+        );
+
+    }
+
+
+    if (estadoPago === "cancelado") {
+
+        alert(
+            "El pago fue cancelado."
+        );
+
+    }
 
 </script>
 
