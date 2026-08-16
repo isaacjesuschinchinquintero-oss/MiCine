@@ -7,6 +7,7 @@
     <title>Mi Cine | Private Cinema</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -82,6 +83,7 @@
             padding: 100px 8%;
             display: flex;
             align-items: center;
+
             background:
                 radial-gradient(
                     circle at 75% 40%,
@@ -155,7 +157,8 @@
 
         .peliculas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            grid-template-columns:
+                repeat(auto-fill, minmax(210px, 1fr));
             gap: 25px;
         }
 
@@ -163,7 +166,9 @@
             background: #111;
             border: 1px solid rgba(255,255,255,0.07);
             overflow: hidden;
-            transition: transform .35s, border-color .35s;
+            transition:
+                transform .35s,
+                border-color .35s;
         }
 
         .pelicula:hover {
@@ -228,7 +233,9 @@
             padding: 30px 0;
         }
 
-        /* MEMBRESÍAS */
+        /* =========================
+           MEMBRESÍAS
+        ========================= */
 
         .membresias {
             padding: 80px 6%;
@@ -256,9 +263,13 @@
 
         .planes {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 25px;
+
             max-width: 1100px;
+
             margin: auto;
         }
 
@@ -267,7 +278,10 @@
             border: 1px solid rgba(255,255,255,.08);
             padding: 35px 28px;
             text-align: center;
-            transition: transform .3s, border-color .3s;
+
+            transition:
+                transform .3s,
+                border-color .3s;
         }
 
         .plan:hover {
@@ -308,11 +322,19 @@
         .plan-boton {
             width: 100%;
             padding: 14px;
+
             border: 1px solid #c8a45d;
+
             background: #c8a45d;
             color: #080808;
+
             font-weight: bold;
+
             cursor: pointer;
+
+            transition:
+                background .2s,
+                color .2s;
         }
 
         .plan-boton:hover {
@@ -328,16 +350,30 @@
         #mensajePago {
             text-align: center;
             margin-top: 25px;
+
             color: #aaa;
+
             font-size: 14px;
+
             line-height: 1.5;
+
+            min-height: 22px;
         }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             margin-top: 80px;
+
             padding: 50px 6%;
-            border-top: 1px solid rgba(255,255,255,.08);
+
+            border-top:
+                1px solid rgba(255,255,255,.08);
+
             text-align: center;
+
             color: #555;
         }
 
@@ -346,16 +382,26 @@
             letter-spacing: 3px;
         }
 
-        /* CUENTA */
+        /* =========================
+           CUENTA
+        ========================= */
 
         .modal {
             display: none;
+
             position: fixed;
+
             inset: 0;
-            background: rgba(0,0,0,.82);
+
+            background:
+                rgba(0,0,0,.82);
+
             z-index: 5000;
+
             align-items: center;
+
             justify-content: center;
+
             padding: 20px;
         }
 
@@ -365,33 +411,50 @@
 
         .cuenta-box {
             width: 100%;
+
             max-width: 430px;
+
             background: #101010;
-            border: 1px solid rgba(200,164,93,.45);
+
+            border:
+                1px solid rgba(200,164,93,.45);
+
             padding: 35px;
+
             position: relative;
         }
 
         .cerrar {
             position: absolute;
+
             top: 15px;
+
             right: 18px;
+
             background: none;
+
             border: none;
+
             color: #777;
+
             font-size: 24px;
+
             cursor: pointer;
         }
 
         .cuenta-box .etiqueta {
             color: #c8a45d;
+
             letter-spacing: 4px;
+
             font-size: 10px;
+
             margin-bottom: 12px;
         }
 
         .cuenta-box h2 {
             margin: 0 0 25px;
+
             font-size: 30px;
         }
 
@@ -401,17 +464,25 @@
 
         .campo label {
             display: block;
+
             color: #999;
+
             font-size: 12px;
+
             margin-bottom: 7px;
         }
 
         .campo input {
             width: 100%;
+
             padding: 13px;
+
             background: #080808;
+
             border: 1px solid #333;
+
             color: white;
+
             outline: none;
         }
 
@@ -421,38 +492,56 @@
 
         .accion-cuenta {
             width: 100%;
+
             padding: 14px;
+
             margin-top: 10px;
-            border: 1px solid #c8a45d;
+
+            border:
+                1px solid #c8a45d;
+
             background: #c8a45d;
+
             color: #080808;
+
             font-weight: bold;
+
             cursor: pointer;
         }
 
         .cambiar {
             margin-top: 18px;
+
             text-align: center;
+
             color: #777;
+
             font-size: 13px;
         }
 
         .cambiar button {
             background: none;
+
             border: none;
+
             color: #c8a45d;
+
             cursor: pointer;
         }
 
         #mensaje {
             margin-top: 15px;
+
             font-size: 13px;
+
             line-height: 1.5;
         }
 
         .usuario-activo {
             display: none;
+
             color: #c8a45d;
+
             font-size: 12px;
         }
 
@@ -460,8 +549,10 @@
 
             .planes {
                 grid-template-columns: 1fr;
+
                 max-width: 450px;
             }
+
         }
 
         @media (max-width: 700px) {
@@ -476,6 +567,7 @@
 
             .hero {
                 padding: 80px 25px;
+
                 min-height: 550px;
             }
 
@@ -484,7 +576,9 @@
             }
 
             .peliculas {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns:
+                    repeat(2,1fr);
+
                 gap: 12px;
             }
 
@@ -507,17 +601,22 @@
             .membresias-titulo h2 {
                 font-size: 30px;
             }
+
         }
+
     </style>
 </head>
 
+
 <body>
+
 
 <header>
 
     <div class="logo">
         MI <span>CINE</span>
     </div>
+
 
     <nav>
 
@@ -533,12 +632,14 @@
             Membresías
         </a>
 
+
         <span
             id="usuarioActivo"
             class="usuario-activo"
         >
             CUENTA ACTIVA
         </span>
+
 
         <button
             id="cuentaBtn"
@@ -553,6 +654,7 @@
 </header>
 
 
+
 <section class="hero">
 
     <div class="hero-content">
@@ -561,16 +663,19 @@
             PRIVATE CINEMA
         </div>
 
+
         <h1>
             El cine,<br>
             a otro nivel.
         </h1>
+
 
         <p>
             Una colección exclusiva de películas,
             seleccionadas para disfrutarse como
             una experiencia cinematográfica privada.
         </p>
+
 
         <a
             href="#membresias"
@@ -582,6 +687,7 @@
     </div>
 
 </section>
+
 
 
 <section
@@ -601,6 +707,7 @@
 
     </div>
 
+
     <div
         class="peliculas"
         id="listaPeliculas"
@@ -615,6 +722,7 @@
 </section>
 
 
+
 <section
     class="membresias"
     id="membresias"
@@ -626,9 +734,11 @@
             MI CINE MEMBERS
         </div>
 
+
         <h2>
             Elige tu membresía
         </h2>
+
 
         <p>
             Elige el plan que mejor se adapte
@@ -638,7 +748,11 @@
     </div>
 
 
+
     <div class="planes">
+
+
+        <!-- BASIC -->
 
         <div class="plan">
 
@@ -646,15 +760,18 @@
                 Basic
             </h3>
 
+
             <div class="plan-precio">
                 $4.99
                 <span>/ mes</span>
             </div>
 
+
             <div class="plan-descripcion">
                 Acceso a nuestro catálogo de películas
                 y contenido exclusivo.
             </div>
+
 
             <button
                 class="plan-boton"
@@ -666,21 +783,27 @@
         </div>
 
 
+
+        <!-- PLUS -->
+
         <div class="plan destacado">
 
             <h3>
                 Plus
             </h3>
 
+
             <div class="plan-precio">
                 $8.99
                 <span>/ mes</span>
             </div>
 
+
             <div class="plan-descripcion">
                 Acceso ampliado a nuestro catálogo
                 y contenido exclusivo.
             </div>
+
 
             <button
                 class="plan-boton"
@@ -692,21 +815,27 @@
         </div>
 
 
+
+        <!-- PREMIUM -->
+
         <div class="plan">
 
             <h3>
                 Premium
             </h3>
 
+
             <div class="plan-precio">
                 $14.99
                 <span>/ mes</span>
             </div>
 
+
             <div class="plan-descripcion">
                 Acceso completo al catálogo y
                 contenido exclusivo Premium.
             </div>
+
 
             <button
                 class="plan-boton"
@@ -717,11 +846,14 @@
 
         </div>
 
+
     </div>
+
 
     <div id="mensajePago"></div>
 
 </section>
+
 
 
 <footer>
@@ -737,12 +869,19 @@
 </footer>
 
 
+
+<!-- =========================
+     MODAL CUENTA
+========================= -->
+
+
 <div
     id="modalCuenta"
     class="modal"
 >
 
     <div class="cuenta-box">
+
 
         <button
             class="cerrar"
@@ -751,13 +890,16 @@
             ×
         </button>
 
+
         <div class="etiqueta">
             MI CINE MEMBERS
         </div>
 
+
         <h2 id="tituloCuenta">
             Iniciar sesión
         </h2>
+
 
         <div class="campo">
 
@@ -765,13 +907,16 @@
                 Correo electrónico
             </label>
 
+
             <input
                 id="email"
                 type="email"
                 placeholder="tu@email.com"
+                autocomplete="email"
             >
 
         </div>
+
 
         <div class="campo">
 
@@ -779,30 +924,38 @@
                 Contraseña
             </label>
 
+
             <input
                 id="password"
                 type="password"
                 placeholder="Tu contraseña"
+                autocomplete="current-password"
             >
 
         </div>
+
 
         <button
             class="accion-cuenta"
             onclick="procesarCuenta()"
         >
+
             <span id="textoAccion">
                 INICIAR SESIÓN
             </span>
+
         </button>
 
+
         <div id="mensaje"></div>
+
 
         <div class="cambiar">
 
             <span id="textoCambiar">
                 ¿No tienes una cuenta?
             </span>
+
 
             <button
                 onclick="cambiarModo()"
@@ -813,201 +966,251 @@
 
         </div>
 
+
     </div>
 
 </div>
 
 
+
+<!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
-    const SUPABASE_URL =
-        "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
+
+/* =========================
+   SUPABASE
+========================= */
 
 
-    /*
-       IMPORTANTE:
-       Sustituye TU_CLAVE_PUBLICA_AQUI
-       por tu Publishable Key de Supabase.
-
-       NO pongas aquí una Stripe Secret Key.
-    */
-
-    const SUPABASE_KEY =
-        "sb_publishable_Dp43yxR3N2F4c14aIiQlqw_DpHMO3Sh";
+const SUPABASE_URL =
+    "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
 
 
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
+const SUPABASE_KEY =
+    "sb_publishable_Dp43yxR3N2F4c14aIiQlqw_DpHMO3Sh";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+
+/* =========================
+   CREATE CHECKOUT URL
+========================= */
+
+
+const CHECKOUT_URL =
+    SUPABASE_URL +
+    "/functions/v1/create-checkout";
+
+
+
+/* =========================
+   CUENTAS
+========================= */
+
+
+let modoRegistro = false;
+
+
+
+function abrirCuenta() {
+
+    document
+        .getElementById("modalCuenta")
+        .classList
+        .add("activo");
+
+}
+
+
+
+function cerrarCuenta() {
+
+    document
+        .getElementById("modalCuenta")
+        .classList
+        .remove("activo");
+
+}
+
+
+
+function cambiarModo() {
+
+    modoRegistro =
+        !modoRegistro;
+
+
+    const titulo =
+        document.getElementById(
+            "tituloCuenta"
         );
 
 
-    /* =========================
-       CUENTAS
-    ========================= */
+    const accion =
+        document.getElementById(
+            "textoAccion"
+        );
 
-    let modoRegistro = false;
+
+    const texto =
+        document.getElementById(
+            "textoCambiar"
+        );
 
 
-    function abrirCuenta() {
+    const boton =
+        document.getElementById(
+            "botonCambiar"
+        );
 
-        document
-            .getElementById("modalCuenta")
-            .classList
-            .add("activo");
+
+    if (modoRegistro) {
+
+        titulo.textContent =
+            "Crear cuenta";
+
+
+        accion.textContent =
+            "CREAR CUENTA";
+
+
+        texto.textContent =
+            "¿Ya tienes una cuenta?";
+
+
+        boton.textContent =
+            "Iniciar sesión";
+
+
+    } else {
+
+        titulo.textContent =
+            "Iniciar sesión";
+
+
+        accion.textContent =
+            "INICIAR SESIÓN";
+
+
+        texto.textContent =
+            "¿No tienes una cuenta?";
+
+
+        boton.textContent =
+            "Crear cuenta";
 
     }
 
 
-    function cerrarCuenta() {
+    document
+        .getElementById("mensaje")
+        .textContent = "";
 
+}
+
+
+
+/* =========================
+   PROCESAR CUENTA
+========================= */
+
+
+async function procesarCuenta() {
+
+
+    const email =
         document
-            .getElementById("modalCuenta")
-            .classList
-            .remove("activo");
+            .getElementById("email")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("password")
+            .value;
+
+
+    const mensaje =
+        document.getElementById(
+            "mensaje"
+        );
+
+
+    if (!email || !password) {
+
+        mensaje.textContent =
+            "Introduce tu correo y contraseña.";
+
+        return;
 
     }
 
 
-    function cambiarModo() {
+    if (password.length < 6) {
 
-        modoRegistro = !modoRegistro;
+        mensaje.textContent =
+            "La contraseña debe tener al menos 6 caracteres.";
 
-        const titulo =
-            document.getElementById("tituloCuenta");
+        return;
 
-        const accion =
-            document.getElementById("textoAccion");
+    }
 
-        const texto =
-            document.getElementById("textoCambiar");
 
-        const boton =
-            document.getElementById("botonCambiar");
+    mensaje.textContent =
+        "Procesando...";
+
+
+    try {
 
 
         if (modoRegistro) {
 
-            titulo.textContent =
-                "Crear cuenta";
 
-            accion.textContent =
-                "CREAR CUENTA";
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signUp({
 
-            texto.textContent =
-                "¿Ya tienes una cuenta?";
+                    email:
+                        email,
 
-            boton.textContent =
-                "Iniciar sesión";
+                    password:
+                        password
 
-        } else {
-
-            titulo.textContent =
-                "Iniciar sesión";
-
-            accion.textContent =
-                "INICIAR SESIÓN";
-
-            texto.textContent =
-                "¿No tienes una cuenta?";
-
-            boton.textContent =
-                "Crear cuenta";
-
-        }
+                });
 
 
-        document
-            .getElementById("mensaje")
-            .textContent = "";
+            if (error) {
 
-    }
+                throw error;
 
-
-    async function procesarCuenta() {
-
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim();
-
-        const password =
-            document
-                .getElementById("password")
-                .value;
-
-        const mensaje =
-            document
-                .getElementById("mensaje");
+            }
 
 
-        if (!email || !password) {
-
-            mensaje.textContent =
-                "Introduce tu correo y contraseña.";
-
-            return;
-
-        }
-
-
-        if (password.length < 6) {
-
-            mensaje.textContent =
-                "La contraseña debe tener al menos 6 caracteres.";
-
-            return;
-
-        }
-
-
-        mensaje.textContent =
-            "Procesando...";
-
-
-        try {
-
-            if (modoRegistro) {
-
-                const {
-                    error
-                } =
-                    await supabaseClient.auth.signUp({
-                        email: email,
-                        password: password
-                    });
-
-
-                if (error) {
-                    throw error;
-                }
-
+            if (
+                data.user &&
+                !data.session
+            ) {
 
                 mensaje.textContent =
-                    "Cuenta creada correctamente.";
+                    "Cuenta creada. Revisa tu correo para confirmar la cuenta.";
 
             } else {
 
-                const {
-                    error
-                } =
-                    await supabaseClient.auth.signInWithPassword({
-                        email: email,
-                        password: password
-                    });
-
-
-                if (error) {
-                    throw error;
-                }
-
-
                 mensaje.textContent =
-                    "Sesión iniciada correctamente.";
+                    "Cuenta creada correctamente.";
 
                 actualizarUsuario();
 
@@ -1018,498 +1221,746 @@
 
             }
 
-        } catch (error) {
 
-            mensaje.textContent =
-                error.message;
+        } else {
 
-        }
-
-    }
-
-
-    async function actualizarUsuario() {
-
-        try {
 
             const {
-                data
-            } =
-                await supabaseClient.auth.getUser();
-
-
-            const boton =
-                document.getElementById("cuentaBtn");
-
-            const usuario =
-                document.getElementById("usuarioActivo");
-
-
-            if (data.user) {
-
-                boton.textContent =
-                    "CERRAR SESIÓN";
-
-                boton.onclick =
-                    cerrarSesion;
-
-                usuario.style.display =
-                    "inline";
-
-            } else {
-
-                boton.textContent =
-                    "INICIAR SESIÓN";
-
-                boton.onclick =
-                    abrirCuenta;
-
-                usuario.style.display =
-                    "none";
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Error verificando usuario:",
-                error
-            );
-
-        }
-
-    }
-
-
-    async function cerrarSesion() {
-
-        await supabaseClient.auth.signOut();
-
-        actualizarUsuario();
-
-    }
-
-
-    /* =========================
-       STRIPE / CHECKOUT
-    ========================= */
-
-    async function suscribirse(priceId) {
-
-        const mensaje =
-            document.getElementById("mensajePago");
-
-        const botones =
-            document.querySelectorAll(".plan-boton");
-
-
-        mensaje.textContent =
-            "Conectando con el sistema de pago...";
-
-
-        botones.forEach(
-            boton => {
-                boton.disabled = true;
-            }
-        );
-
-
-        try {
-
-            const url =
-                "https://auaqyfnyiqfxkjxtrkoi.supabase.co/functions/v1/create-checkout";
-
-
-            console.log(
-                "URL:",
-                url
-            );
-
-            console.log(
-                "Price ID:",
-                priceId
-            );
-
-
-            const respuesta =
-                await fetch(
-                    url,
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "application/json",
-
-                            "apikey":
-                                SUPABASE_KEY,
-
-                            "Authorization":
-                                "Bearer " +
-                                SUPABASE_KEY
-                        },
-
-                        body: JSON.stringify({
-                            priceId: priceId
-                        })
-                    }
-                );
-
-
-            console.log(
-                "HTTP:",
-                respuesta.status
-            );
-
-
-            const texto =
-                await respuesta.text();
-
-
-            console.log(
-                "Respuesta:",
-                texto
-            );
-
-
-            let resultado;
-
-
-            try {
-
-                resultado =
-                    JSON.parse(texto);
-
-            } catch {
-
-                resultado = {
-                    error: texto
-                };
-
-            }
-
-
-            if (!respuesta.ok) {
-
-                throw new Error(
-                    resultado.error ||
-                    "Error HTTP " +
-                    respuesta.status
-                );
-
-            }
-
-
-            if (!resultado.url) {
-
-                throw new Error(
-                    "Stripe no devolvió la URL de pago."
-                );
-
-            }
-
-
-            mensaje.textContent =
-                "Redirigiendo a Stripe...";
-
-
-            window.location.href =
-                resultado.url;
-
-
-        } catch (error) {
-
-            console.error(
-                "ERROR COMPLETO:",
-                error
-            );
-
-
-            mensaje.textContent =
-                "ERROR: " +
-                error.message;
-
-
-            botones.forEach(
-                boton => {
-                    boton.disabled = false;
-                }
-            );
-
-        }
-
-    }
-
-
-    /* =========================
-       CATÁLOGO
-    ========================= */
-
-    async function cargarPeliculas() {
-
-        const lista =
-            document.getElementById(
-                "listaPeliculas"
-            );
-
-
-        try {
-
-            const {
-                data,
                 error
             } =
-                await supabaseClient
-                    .from("movies")
-                    .select("*")
-                    .order(
-                        "created_at",
-                        {
-                            ascending: false
-                        }
-                    );
+                await supabaseClient.auth.signInWithPassword({
+
+                    email:
+                        email,
+
+                    password:
+                        password
+
+                });
 
 
             if (error) {
+
                 throw error;
-            }
-
-
-            lista.innerHTML = "";
-
-
-            if (!data || data.length === 0) {
-
-                lista.innerHTML =
-                    `
-                    <p class="cargando">
-                        Todavía no hay películas.
-                    </p>
-                    `;
-
-                return;
 
             }
 
 
-            data.forEach(
-                pelicula => {
-
-                    const tarjeta =
-                        document.createElement(
-                            "div"
-                        );
-
-                    tarjeta.className =
-                        "pelicula";
+            mensaje.textContent =
+                "Sesión iniciada correctamente.";
 
 
-                    if (pelicula.poster_url) {
-
-                        const imagen =
-                            document.createElement(
-                                "img"
-                            );
-
-                        imagen.className =
-                            "poster";
-
-                        imagen.alt =
-                            pelicula.title;
-
-                        imagen.src =
-                            pelicula.poster_url;
+            await actualizarUsuario();
 
 
-                        imagen.onerror =
-                            function() {
-
-                                const reemplazo =
-                                    document.createElement(
-                                        "div"
-                                    );
-
-                                reemplazo.className =
-                                    "poster-error";
-
-                                reemplazo.textContent =
-                                    "Carátula no disponible";
-
-                                imagen.replaceWith(
-                                    reemplazo
-                                );
-
-                            };
-
-
-                        tarjeta.appendChild(
-                            imagen
-                        );
-
-                    } else {
-
-                        const sinImagen =
-                            document.createElement(
-                                "div"
-                            );
-
-                        sinImagen.className =
-                            "poster-error";
-
-                        sinImagen.textContent =
-                            "Sin carátula";
-
-                        tarjeta.appendChild(
-                            sinImagen
-                        );
-
-                    }
-
-
-                    const contenido =
-                        document.createElement(
-                            "div"
-                        );
-
-                    contenido.className =
-                        "contenido";
-
-
-                    const titulo =
-                        document.createElement(
-                            "h3"
-                        );
-
-                    titulo.textContent =
-                        pelicula.title;
-
-
-                    const datos =
-                        document.createElement(
-                            "div"
-                        );
-
-                    datos.className =
-                        "datos";
-
-                    datos.textContent =
-                        [
-                            pelicula.genre,
-                            pelicula.year
-                        ]
-                        .filter(Boolean)
-                        .join(" · ");
-
-
-                    const boton =
-                        document.createElement(
-                            "a"
-                        );
-
-                    boton.className =
-                        "ver";
-
-                    boton.textContent =
-                        "VER PELÍCULA";
-
-
-                    if (pelicula.video_url) {
-
-                        boton.href =
-                            pelicula.video_url;
-
-                        boton.target =
-                            "_blank";
-
-                        boton.rel =
-                            "noopener noreferrer";
-
-                    } else {
-
-                        boton.href =
-                            "#";
-
-                        boton.onclick =
-                            function(event) {
-
-                                event.preventDefault();
-
-                                alert(
-                                    "Esta película todavía no tiene video."
-                                );
-
-                            };
-
-                    }
-
-
-                    contenido.appendChild(
-                        titulo
-                    );
-
-                    contenido.appendChild(
-                        datos
-                    );
-
-                    contenido.appendChild(
-                        boton
-                    );
-
-
-                    tarjeta.appendChild(
-                        contenido
-                    );
-
-
-                    lista.appendChild(
-                        tarjeta
-                    );
-
-                }
+            setTimeout(
+                cerrarCuenta,
+                700
             );
-
-
-        } catch (error) {
-
-            console.error(
-                "Error cargando películas:",
-                error
-            );
-
-
-            lista.innerHTML =
-                `
-                <p class="cargando">
-                    No se pudieron cargar las películas.
-                </p>
-                `;
 
         }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Error de cuenta:",
+            error
+        );
+
+
+        mensaje.textContent =
+            error.message ||
+            "No se pudo procesar la cuenta.";
+
+    }
+
+}
+
+
+
+/* =========================
+   ACTUALIZAR USUARIO
+========================= */
+
+
+async function actualizarUsuario() {
+
+
+    try {
+
+
+        const {
+            data
+        } =
+            await supabaseClient.auth.getUser();
+
+
+        const boton =
+            document.getElementById(
+                "cuentaBtn"
+            );
+
+
+        const usuario =
+            document.getElementById(
+                "usuarioActivo"
+            );
+
+
+        if (data.user) {
+
+
+            boton.textContent =
+                "CERRAR SESIÓN";
+
+
+            boton.onclick =
+                cerrarSesion;
+
+
+            usuario.style.display =
+                "inline";
+
+
+        } else {
+
+
+            boton.textContent =
+                "INICIAR SESIÓN";
+
+
+            boton.onclick =
+                abrirCuenta;
+
+
+            usuario.style.display =
+                "none";
+
+        }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Error verificando usuario:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   CERRAR SESIÓN
+========================= */
+
+
+async function cerrarSesion() {
+
+
+    await supabaseClient.auth.signOut();
+
+
+    actualizarUsuario();
+
+}
+
+
+
+/* =========================
+   STRIPE CHECKOUT
+========================= */
+
+
+async function suscribirse(
+    priceId
+) {
+
+
+    const mensaje =
+        document.getElementById(
+            "mensajePago"
+        );
+
+
+    const botones =
+        document.querySelectorAll(
+            ".plan-boton"
+        );
+
+
+    /*
+     * Primero comprobar
+     * la sesión REAL de Supabase.
+     */
+
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (
+        sessionError ||
+        !sessionData.session
+    ) {
+
+
+        mensaje.textContent =
+            "Debes iniciar sesión antes de suscribirte.";
+
+
+        abrirCuenta();
+
+
+        return;
 
     }
 
 
-    /* =========================
-       INICIO
-    ========================= */
-
-    actualizarUsuario();
-
-    cargarPeliculas();
+    /*
+     * Obtener el access token real.
+     */
 
 
-    supabaseClient.auth.onAuthStateChange(
-        function() {
+    const accessToken =
+        sessionData.session
+            .access_token;
 
-            actualizarUsuario();
+
+    if (!accessToken) {
+
+
+        mensaje.textContent =
+            "Tu sesión no es válida. Inicia sesión nuevamente.";
+
+
+        abrirCuenta();
+
+
+        return;
+
+    }
+
+
+    /*
+     * Desactivar botones
+     * mientras se procesa.
+     */
+
+
+    botones.forEach(
+        boton => {
+
+            boton.disabled =
+                true;
 
         }
     );
 
 
-    /* =========================
-       RESULTADO DEL PAGO
-    ========================= */
+    mensaje.textContent =
+        "Conectando con Stripe...";
+
+
+    try {
+
+
+        console.log(
+            "Checkout URL:",
+            CHECKOUT_URL
+        );
+
+
+        console.log(
+            "Price ID:",
+            priceId
+        );
+
+
+        /*
+         * IMPORTANTE:
+         *
+         * Aquí NO usamos SUPABASE_KEY
+         * como Bearer.
+         *
+         * Usamos el access_token
+         * de la sesión del usuario.
+         */
+
+
+        const respuesta =
+            await fetch(
+                CHECKOUT_URL,
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            accessToken
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            priceId:
+                                priceId
+
+                        })
+
+                }
+            );
+
+
+        console.log(
+            "HTTP:",
+            respuesta.status
+        );
+
+
+        const texto =
+            await respuesta.text();
+
+
+        console.log(
+            "Respuesta:",
+            texto
+        );
+
+
+        let resultado;
+
+
+        try {
+
+
+            resultado =
+                JSON.parse(texto);
+
+
+        } catch {
+
+
+            resultado = {
+
+                error:
+                    texto ||
+                    "Respuesta inválida del servidor."
+
+            };
+
+        }
+
+
+        if (!respuesta.ok) {
+
+
+            throw new Error(
+
+                resultado.error ||
+
+                "Error HTTP " +
+                respuesta.status
+
+            );
+
+        }
+
+
+        if (!resultado.url) {
+
+
+            throw new Error(
+                "Stripe no devolvió la URL de pago."
+            );
+
+        }
+
+
+        mensaje.textContent =
+            "Redirigiendo a Stripe...";
+
+
+        /*
+         * Ir a Stripe Checkout.
+         */
+
+
+        window.location.href =
+            resultado.url;
+
+
+    } catch (error) {
+
+
+        console.error(
+            "ERROR DE CHECKOUT:",
+            error
+        );
+
+
+        mensaje.textContent =
+            "No se pudo iniciar el pago: " +
+            (
+                error.message ||
+                "Error desconocido."
+            );
+
+
+        botones.forEach(
+            boton => {
+
+                boton.disabled =
+                    false;
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* =========================
+   CATÁLOGO
+========================= */
+
+
+async function cargarPeliculas() {
+
+
+    const lista =
+        document.getElementById(
+            "listaPeliculas"
+        );
+
+
+    try {
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("movies")
+                .select("*")
+                .order(
+                    "created_at",
+                    {
+                        ascending:
+                            false
+                    }
+                );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        lista.innerHTML =
+            "";
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+
+            lista.innerHTML =
+                `
+                <p class="cargando">
+                    Todavía no hay películas.
+                </p>
+                `;
+
+
+            return;
+
+        }
+
+
+        data.forEach(
+            pelicula => {
+
+
+                const tarjeta =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                tarjeta.className =
+                    "pelicula";
+
+
+                /*
+                 * POSTER
+                 */
+
+
+                if (
+                    pelicula.poster_url
+                ) {
+
+
+                    const imagen =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    imagen.className =
+                        "poster";
+
+
+                    imagen.alt =
+                        pelicula.title ||
+                        "Película";
+
+
+                    imagen.src =
+                        pelicula.poster_url;
+
+
+                    imagen.onerror =
+                        function() {
+
+
+                            const reemplazo =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            reemplazo.className =
+                                "poster-error";
+
+
+                            reemplazo.textContent =
+                                "Carátula no disponible";
+
+
+                            imagen.replaceWith(
+                                reemplazo
+                            );
+
+                        };
+
+
+                    tarjeta.appendChild(
+                        imagen
+                    );
+
+
+                } else {
+
+
+                    const sinImagen =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    sinImagen.className =
+                        "poster-error";
+
+
+                    sinImagen.textContent =
+                        "Sin carátula";
+
+
+                    tarjeta.appendChild(
+                        sinImagen
+                    );
+
+                }
+
+
+                /*
+                 * CONTENIDO
+                 */
+
+
+                const contenido =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                contenido.className =
+                    "contenido";
+
+
+                const titulo =
+                    document.createElement(
+                        "h3"
+                    );
+
+
+                titulo.textContent =
+                    pelicula.title ||
+                    "Sin título";
+
+
+                const datos =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                datos.className =
+                    "datos";
+
+
+                datos.textContent =
+                    [
+                        pelicula.genre,
+                        pelicula.year
+                    ]
+                    .filter(Boolean)
+                    .join(" · ");
+
+
+                /*
+                 * BOTÓN PELÍCULA
+                 */
+
+
+                const boton =
+                    document.createElement(
+                        "a"
+                    );
+
+
+                boton.className =
+                    "ver";
+
+
+                boton.textContent =
+                    "VER PELÍCULA";
+
+
+                if (
+                    pelicula.video_url
+                ) {
+
+
+                    boton.href =
+                        pelicula.video_url;
+
+
+                    boton.target =
+                        "_blank";
+
+
+                    boton.rel =
+                        "noopener noreferrer";
+
+
+                } else {
+
+
+                    boton.href =
+                        "#";
+
+
+                    boton.onclick =
+                        function(event) {
+
+
+                            event.preventDefault();
+
+
+                            alert(
+                                "Esta película todavía no tiene video."
+                            );
+
+                        };
+
+                }
+
+
+                contenido.appendChild(
+                    titulo
+                );
+
+
+                contenido.appendChild(
+                    datos
+                );
+
+
+                contenido.appendChild(
+                    boton
+                );
+
+
+                tarjeta.appendChild(
+                    contenido
+                );
+
+
+                lista.appendChild(
+                    tarjeta
+                );
+
+            }
+        );
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Error cargando películas:",
+            error
+        );
+
+
+        lista.innerHTML =
+            `
+            <p class="cargando">
+                No se pudieron cargar las películas.
+            </p>
+            `;
+
+    }
+
+}
+
+
+
+/* =========================
+   RESULTADO DEL PAGO
+========================= */
+
+
+function mostrarResultadoPago() {
+
 
     const parametros =
         new URLSearchParams(
@@ -1518,29 +1969,99 @@
 
 
     const estadoPago =
-        parametros.get("pago");
+        parametros.get(
+            "pago"
+        );
 
 
-    if (estadoPago === "exitoso") {
-
+    const mensaje =
         document.getElementById(
             "mensajePago"
-        ).textContent =
-            "Pago realizado correctamente.";
+        );
+
+
+    if (
+        estadoPago ===
+        "exitoso"
+    ) {
+
+
+        mensaje.textContent =
+            "Pago realizado correctamente. Tu membresía se está activando.";
+
+
+        /*
+         * Quitar el parámetro
+         * de la URL después de
+         * mostrar el mensaje.
+         */
+
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
 
     }
 
 
-    if (estadoPago === "cancelado") {
+    if (
+        estadoPago ===
+        "cancelado"
+    ) {
 
-        document.getElementById(
-            "mensajePago"
-        ).textContent =
-            "El pago fue cancelado.";
+
+        mensaje.textContent =
+            "El pago fue cancelado. No se realizó ningún cargo.";
+
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
 
     }
+
+}
+
+
+
+/* =========================
+   INICIO
+========================= */
+
+
+actualizarUsuario();
+
+
+cargarPeliculas();
+
+
+mostrarResultadoPago();
+
+
+
+/*
+ * Mantener actualizada
+ * la cuenta cuando Supabase
+ * cambia la sesión.
+ */
+
+
+supabaseClient.auth.onAuthStateChange(
+    function() {
+
+        actualizarUsuario();
+
+    }
+);
+
 
 </script>
+
 
 </body>
 </html>
