@@ -462,7 +462,6 @@
                 grid-template-columns: 1fr;
                 max-width: 450px;
             }
-
         }
 
         @media (max-width: 700px) {
@@ -637,6 +636,7 @@
         </p>
 
     </div>
+
 
     <div class="planes">
 
@@ -825,13 +825,13 @@
     const SUPABASE_URL =
         "https://auaqyfnyiqfxkjxtrkoi.supabase.co";
 
-    /*
-       PEGA AQUÍ TU PUBLISHABLE KEY DE SUPABASE.
 
-       NO pongas aquí:
-       - Stripe Secret Key
-       - STRIPE_SECRET_KEY
-       - service_role
+    /*
+       IMPORTANTE:
+       Sustituye TU_CLAVE_PUBLICA_AQUI
+       por tu Publishable Key de Supabase.
+
+       NO pongas aquí una Stripe Secret Key.
     */
 
     const SUPABASE_KEY =
@@ -1091,7 +1091,7 @@
 
 
     /* =========================
-       STRIPE
+       STRIPE / CHECKOUT
     ========================= */
 
     async function suscribirse(priceId) {
@@ -1121,7 +1121,7 @@
 
 
             console.log(
-                "Enviando solicitud a:",
+                "URL:",
                 url
             );
 
@@ -1139,7 +1139,14 @@
 
                         headers: {
                             "Content-Type":
-                                "application/json"
+                                "application/json",
+
+                            "apikey":
+                                SUPABASE_KEY,
+
+                            "Authorization":
+                                "Bearer " +
+                                SUPABASE_KEY
                         },
 
                         body: JSON.stringify({
@@ -1150,7 +1157,7 @@
 
 
             console.log(
-                "Estado HTTP:",
+                "HTTP:",
                 respuesta.status
             );
 
